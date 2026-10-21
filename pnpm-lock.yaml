@@ -2301,8 +2301,8 @@ importers:
         specifier: 1.14.48
         version: 1.14.48
       '@opencode-ai/sdk':
-        specifier: ^1.18.5
-        version: 1.18.9
+        specifier: ^1.19.3
+        version: 1.19.3
       tsdown:
         specifier: 0.22.9
         version: 0.22.9(@volar/typescript@2.4.23(typescript@7.0.2))(oxc-resolver@11.21.2)(tsx@4.23.1)(typescript@7.0.2)
@@ -16270,8 +16270,8 @@ packages:
   '@opencode-ai/sdk@1.14.48':
     resolution: {integrity: sha512-wKM86jCzV/ZApyWrdm3uP8XdWcS0LMbu3FV+OWz1ChiGGg1wiIWNGMJs5CY8/QX2/rUuZrd1Q1DqvdamZ0zLeg==}
 
-  '@opencode-ai/sdk@1.18.9':
-    resolution: {integrity: sha512-oDJSmsmiGW+3lNLmZYj3EpUkpiT3ITZBKffH3mrmu2KMJXlkxQ/Nvv7jqPffSM7o8lCdBZS/aCE+2GkA3/92gQ==}
+  '@opencode-ai/sdk@1.19.3':
+    resolution: {integrity: sha512-G63bZD2r6plqgjFdenWVj3HBFWmLQSVuG9CXMQuTjakzA5aL6wFLmI23Biz5ESE4lQQ08UTHcY2N4NOShJFb2w==}
 
   '@openfeature/core@1.9.1':
     resolution: {integrity: sha512-YySPtH4s/rKKnHRU0xyFGrqMU8XA+OIPNWDrlEFxE6DCVWCIrxE5YpiB94YD2jMFn6SSdA0cwQ8vLkCkl8lm8A==}
@@ -23587,10 +23587,6 @@ packages:
   default-browser@4.0.0:
     resolution: {integrity: sha512-wX5pXO1+BrhMkSbROFsyxUm0i/cJEScyNhA4PPxc41ICuv05ZZB/MX28s8aZx6xjmatvebIapF6hLEKEcpneUA==}
     engines: {node: '>=14.16'}
-
-  default-browser@5.5.0:
-    resolution: {integrity: sha512-H9LMLr5zwIbSxrmvikGuI/5KGhZ8E2zH3stkMgM5LpOWDutGM2JZaj460Udnf1a+946zc7YBgrqEWwbk7zHvGw==}
-    engines: {node: '>=18'}
 
   default-browser@5.5.1:
     resolution: {integrity: sha512-m1pAzaJgZ/gssEqlOhJkPJp8Xly7QyW6xcrkUa2KKcDeDSEMP7X8xipU3snUcfisTQx0w1AGae+9UtJSfVnXGw==}
@@ -39546,7 +39542,7 @@ snapshots:
     dependencies:
       cross-spawn: 7.0.6
 
-  '@opencode-ai/sdk@1.18.9':
+  '@opencode-ai/sdk@1.19.3':
     dependencies:
       cross-spawn: 7.0.6
 
@@ -47230,11 +47226,6 @@ snapshots:
       execa: 7.2.0
       titleize: 3.0.0
 
-  default-browser@5.5.0:
-    dependencies:
-      bundle-name: 4.1.1
-      default-browser-id: 5.0.0
-
   default-browser@5.5.1:
     dependencies:
       bundle-name: 4.1.1
@@ -52034,7 +52025,7 @@ snapshots:
 
   open@10.2.0:
     dependencies:
-      default-browser: 5.5.0
+      default-browser: 5.5.1
       define-lazy-prop: 3.0.0
       is-inside-container: 1.0.0
       wsl-utils: 0.1.0
