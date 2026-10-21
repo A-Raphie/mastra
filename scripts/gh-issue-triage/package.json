@@ -28,7 +28,7 @@
     "adm-zip@<=0.6.0": "0.6.1",
     "image-size@<=2.0.2": "2.0.4",
     "undici": "8.12.2",
-    "@modelcontextprotocol/client": "2.2.0",
+    "@modelcontextprotocol/client": "2.3.0",
     "@modelcontextprotocol/sdk@<1.32.0": "1.32.1"
   },
   "devDependencies": {
