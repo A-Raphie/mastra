@@ -523,25 +523,36 @@ export class ToolSearchProcessor implements Processor<'tool-search'> {
     // Get BM25 results (request more than topK to allow for re-ranking after boosting).
     // When filtering is enabled, inspect every BM25 match so denied high-ranking tools
     // do not prevent lower-ranking allowed tools from filling the result set.
-    const searchLimit = this.filter ? catalog.index.size : this.searchConfig.topK * 2;
+    const searchLimit = this.filter ? catalog.index.size : this.searchConfig.topK * 4;
     const bm25Results = catalog.index.search(query, searchLimit, 0);
 
     if (bm25Results.length === 0) return [];
 
-    // Apply name-match boosting on top of BM25 scores
-    const queryTokens = query
-      .toLowerCase()
-      .split(/[\s\-_.,;:!?()[\]{}'"]+/)
-      .filter(t => t.length > 1);
+    // Apply name-match boosting on top of BM25 scores. Tokens are deduplicated:
+    // a repeated query term would otherwise earn double BM25 weight and double
+    // boosts, drowning out the other tools the query names.
+    const queryLower = query.toLowerCase();
+    const queryTokens = [
+      ...new Set(
+        queryLower
+          .split(/[\s\-_.,;:!?()[\]{}'"]+/)
+          .filter(t => t.length > 1),
+      ),
+    ];
 
     const boostedResults = bm25Results.map(result => {
       let score = result.score;
       const nameLower = result.id.toLowerCase();
 
+      // A verbatim id match is compared against the full un-split query: ids
+      // containing '-' or '_' tokenize away, so an exact single-term equality
+      // could never fire for them.
+      if (queryLower.includes(nameLower)) {
+        score += 5;
+      }
+
       for (const term of queryTokens) {
-        if (nameLower === term) {
-          score += 5;
-        } else if (nameLower.includes(term)) {
+        if (nameLower.includes(term)) {
           score += 2;
         }
       }
